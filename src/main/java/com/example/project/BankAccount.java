@@ -1,54 +1,39 @@
 package com.example.project;
 
-
 public class BankAccount{
-    private String accountType;
-    private double balance;
+    //INSTANCE VARIABLES
+    //Declare a private String variable called "accountType"
+    //Declare a private double variable called "balance"
+
+    //CONSTRUCTOR
+    //You need a constructor with two paramters
+    //    a String that contains the account type name "savings" or "checking"
+    //    a double that contains the initial balance
+    //the constructor should initialize the "accountType" and "balance"
+    //instance variables
+ 
+
+    //GETTER METHOD
+    //You need a getter method for the instance variable "balance" called "getBalance"
+    //It should return the balance
+ 
 
 
-    // Constructor with account type and initial balance
-    public BankAccount(String accountType, double initialBalance) {
-        this.accountType = accountType;
-        this.balance = initialBalance;
-    }
-
-    public double getBalance(){
-        return balance;
-    }
-
-    public void setBalance(double balance){
-        this.balance = balance;
-    }
-
-    // Deposit method
+    // METHOD deposit(double amount)
+    //should deposit an amount into the  account object (rounded to the nearest tenth!)
+    //it should not deposit an amount into the account if the account is overdrawn 
     public void deposit(double amount) {
-        if (amount > 0) {
-            balance += amount;
-            this.balance = Math.round(balance*100)/100.0;
-            System.out.println(amount + " has been deposited to your " + accountType + " account.");
-        } else {
-            System.out.println("Invalid deposit amount.");
-        }
     }
 
-    // Withdraw method
+      // METHOD withdraw(double amount)
+    //should withdraw an amount into the  account object (rounded to the nearest tenth!)
+    //it should not withdraw an amount into the account if the account is overdrawn
     public void withdraw(double amount) {
-        if (amount > 0 && amount <= balance) {
-            balance -= amount;
-            this.balance = Math.round(balance*100)/100.0;
-            System.out.println(amount + " has been withdrawn from your " + accountType + " account.");
-        } else {
-            System.out.println("Invalid withdrawal amount.");
-        }
     }
 
-    // Method to check balance
-    public void checkBalance() {
-        System.out.println("Your " + accountType + " account balance is: $" + balance);
-    }
+    //you should create additional methods that allow you to re-use code. Suggestions below:
+    //a checkBalance method
 
-    // Getter for account type
-    public String getAccountType() {
-        return accountType;
-    }
+
+ 
 }

@@ -2,109 +2,52 @@ package com.example.project;
 import java.util.Scanner;
 
 public class Bank {
-    private BankAccount savingsAccount;
-    private BankAccount checkingAccount;
+    //INSTANCE VARIABLES
+    //Declare a private BankAccount class variable called "savingsAccount"
+    //Declare a private BankAccount class variable called "checkingAccount"
 
-    // Constructor initializes the accounts with initial balances
-    public Bank() {
-        savingsAccount = new BankAccount("Savings", 500.00);
-        checkingAccount = new BankAccount("Checking", 1000.00);
+
+    // CONSTRUCTOR
+    //you need a constructor with no paramters
+    // initializes the instance variables with the initial balances stated in project document
+
+    //GETTER METHODS 
+    //getter method for "savingsAccount" instance variable. Name it "getSavingsAccount"
+
+    //getter method for "checkingAccount" instance variable. Name it "getCheckingAccount"
+
+
+    //PUBLIC VOID RUN() METHOD
+    /**
+     * If a user wants to make a deposit, they must enter "1"
+     * If a user wants to make a withdraw, they must enter "2"
+     * If a user wants to check their balance, they must enter "3"
+     * If a user wants to exit the program, they must enter "4"
+     */
+    public void run() {   
     }
 
-    public BankAccount getSavingsAccount(){
-        return savingsAccount;
-    }
-
-    public BankAccount getCheckingAccount(){
-        return checkingAccount;
-    }
-
-    // Method to start the banking system
-    public void run() {
-        Scanner scanner = new Scanner(System.in);
-        boolean running = true;
-
-        while (running) {
-            System.out.println("\nPlease choose an option:");
-            System.out.println("1. Deposit");
-            System.out.println("2. Withdraw");
-            System.out.println("3. Check Balance");
-            System.out.println("4. Exit");
-            int choice = scanner.nextInt();
-            scanner.nextLine();  // Consume newline
-
-            if (choice == 1){
-                deposit(scanner);
-            }else if(choice == 2){
-                withdraw(scanner);
-            }else if(choice ==3){
-                checkBalance();
-            }
-            else if (choice == 4){
-                running = false;
-                System.out.println("Thank you for banking with us!");
-            }else{
-                System.out.println("Invalid option. Please try again.");
-            }
-        }
-    }
-
-    // Method for deposits
+    // METHOD deposit(Scanner scanner) and withdraw(Scanner scanner)
+    //deposit(Scanner scanner) handles what happens with the deposit amount and what account it should be deposited to
+    //withdraw(Scanner scanner) handles what happend with the withdraw ammount and what account it should be deposited to
+    /* IMPORTANT....
+     * After the user inputs an amount, they should be prompted to choose SAVINGS ACCOUNT
+     * The user MUST input "yes" or "no" <--the tests won't work if you don't use these inputs
+     * If they enter, "no", they should be prompted to choose CHECKING ACCOUNT
+     * **Note if they enter "no" for BOTH PROMPTS (choose savings, choose checking), 
+     * they should be brought back to the main menu
+     * Please refer back to the videos!
+     */
     public void deposit(Scanner scanner) {
-        System.out.println("Enter the amount to deposit: ");
-        double amount = scanner.nextDouble();
-        scanner.nextLine();  // Consume newline
-        chooseAccountType(scanner, amount, "deposit");
     }
 
     // Method for withdrawals
+
     public void withdraw(Scanner scanner) {
-        System.out.println("Enter the amount to withdraw: ");
-        double amount = scanner.nextDouble();
-        scanner.nextLine();  // Consume newline
-        chooseAccountType(scanner, amount, "withdraw");
     }
 
-    public void chooseAccountType(Scanner scanner, double amount, String action){
-        for (int i = 1; i <= 2; i++) {
-            if (i == 1) {
-                System.out.println("Do you want to withdraw from your Savings account? (yes/no)");
-                String response = scanner.nextLine();
-                if (response.equals("yes")) {
-                    if (action == "withdraw"){
-                        savingsAccount.withdraw(amount);
-                    }else{
-                        savingsAccount.deposit(amount);
-                    }
-                    return;
-                }
-            }
-            if (i == 2) {
-                System.out.println("Do you want to withdraw from your Checking account? (yes/no)");
-                String response = scanner.nextLine();
-                if (response.equals("yes")) {
-                    if (action == "withdraw"){
-                        checkingAccount.withdraw(amount);
-                    }else{
-                        System.out.println("hi");
-                        checkingAccount.deposit(amount);
-                    }
-                    return;
-                }
-            }
-        }
-        System.out.println("No valid account selected.");
-    }
+    //you should create additional methods that allow you to re-use code. Suggestions below:
+    //a checkBalance method, chooseAccountType method, etc.
 
-
-    // Method to check the balance of both accounts
-    public void checkBalance() {
-        for (int i = 1; i <= 2; i++) {
-            if (i == 1) {
-                savingsAccount.checkBalance();
-            } else if (i == 2) {
-                checkingAccount.checkBalance();
-            }
-        }
-    }
+    
 }

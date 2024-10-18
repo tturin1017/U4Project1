@@ -30,10 +30,6 @@ public class testATM {
         double expectedOutput = 600.0;
         double studentOutput = bank.getSavingsAccount().getBalance();
         assertEquals(expectedOutput, studentOutput);
-
-        // undo the binding in System
-        // System.setOut(originalOut);
-        // System.setIn(System.in);
     }
 
     @Test
